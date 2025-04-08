@@ -5,22 +5,32 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import xyz.seanchao.bookstore.entity.Book;
 
-import java.util.List;
-
 public interface BookRepository extends JpaRepository<Book, Integer> {
 
-    // Filter by author (exact match)
-    List<Book> findByAuthor(String author);
+    // Search by author (with pagination)
+    Page<Book> findByAuthor(String author, Pageable pageable);
 
-    // Filter by category (exact match)
-    List<Book> findByCategory(String category);
+    // Search by category (with pagination)
+    Page<Book> findByCategory(String category, Pageable pageable);
 
-    // Filter by rating (equal or greater than)
-    List<Book> findByRatingGreaterThanEqual(Double rating);
+    // Filter by rating >= value (with pagination)
+    Page<Book> findByRatingGreaterThanEqual(Double rating, Pageable pageable);
 
-    // Search by title (case-insensitive, partial match)
-    List<Book> findByTitleContainingIgnoreCase(String title);
+    // Search by title (case-insensitive partial match, with pagination)
+    Page<Book> findByTitleContainingIgnoreCase(String title, Pageable pageable);
 
-    // Support for filtering + pagination + sorting (Spring handles it)
+    // Combination: author + category + rating
+    Page<Book> findByAuthorAndCategoryAndRatingGreaterThanEqual(String author, String category, Double rating, Pageable pageable);
+
+    // Combination: author + category
+    Page<Book> findByAuthorAndCategory(String author, String category, Pageable pageable);
+
+    // Combination: author + rating
+    Page<Book> findByAuthorAndRatingGreaterThanEqual(String author, Double rating, Pageable pageable);
+
+    // Combination: category + rating
+    Page<Book> findByCategoryAndRatingGreaterThanEqual(String category, Double rating, Pageable pageable);
+
+    // Fallback for all books with pagination and sorting
     Page<Book> findAll(Pageable pageable);
 }
