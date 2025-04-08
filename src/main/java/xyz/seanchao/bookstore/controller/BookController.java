@@ -1,22 +1,18 @@
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
-import org.springframework.web.bind.annotation.RequestParam;
-
-// ...
-
 @GetMapping("/books")
-public Page<Book> getAllBooks(
+public Page<Book> getBooks(
         @RequestParam(defaultValue = "0") int page,
         @RequestParam(defaultValue = "10") int size,
         @RequestParam(defaultValue = "id") String sortBy,
-        @RequestParam(defaultValue = "asc") String direction
+        @RequestParam(defaultValue = "asc") String direction,
+        @RequestParam(required = false) String author,
+        @RequestParam(required = false) String category,
+        @RequestParam(required = false) Double rating
 ) {
-    Sort sort = direction.equalsIgnoreCase("desc")
-            ? Sort.by(sortBy).descending()
-            : Sort.by(sortBy).ascending();
-
+    Sort sort = direction.equalsIgnoreCase("desc") 
+        ? Sort.by(sortBy).descending() 
+        : Sort.by(sortBy).ascending();
+    
     Pageable pageable = PageRequest.of(page, size, sort);
-    return bookService.findAllPaginated(pageable);
+    
+    return bookService.getFilteredBooks(pageable, author, category, rating);
 }
