@@ -1,14 +1,16 @@
-package xyz.seanchao.bookstore.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import xyz.seanchao.bookstore.entity.Book;
-
-import java.util.List;
-
-public interface BookRepository extends JpaRepository<Book, Integer> {
-
-    @Query(value = "SELECT book FROM Book book where book.author=?1")
-    List<Book> findByAuthor(String author);
-
+@GetMapping("/books/search")
+public List<Book> searchBooks(@RequestParam(required = false) String title,
+                              @RequestParam(required = false) String author,
+                              @RequestParam(required = false) String category,
+                              @RequestParam(required = false) Double minRating) {
+    if (title != null) {
+        return bookRepository.findByTitleContainingIgnoreCase(title);
+    } else if (author != null) {
+        return bookRepository.findByAuthor(author);
+    } else if (category != null) {
+        return bookRepository.findByCategory(category);
+    } else if (minRating != null) {
+        return bookRepository.findByRatingGreaterThanEqual(minRating);
+    }
+    return bookRepository.findAll();
 }
