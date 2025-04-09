@@ -1,4 +1,4 @@
-package xyz.seanchao.bookstore.entity;
+package xyz.shreyagupta.bookstore.entity;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;

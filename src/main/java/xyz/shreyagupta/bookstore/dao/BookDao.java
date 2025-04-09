@@ -1,9 +1,8 @@
-package xyz.seanchao.bookstore.dao;
+package xyz.shreyagupta.bookstore.dao;
 
-import xyz.seanchao.bookstore.entity.Book;
-
-import java.util.ArrayList;
 import java.util.List;
+
+import xyz.shreyagupta.bookstore.entity.Book;
 
 public interface BookDao {
     Book findOne(Integer id);

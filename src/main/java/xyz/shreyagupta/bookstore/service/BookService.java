@@ -1,10 +1,13 @@
-package xyz.seanchao.bookstore.service;
+package xyz.shreyagupta.bookstore.service;
+
+<<<<<<< HEAD:src/main/java/xyz/shreyagupta/bookstore/service/BookService.java
+import java.util.List;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import xyz.seanchao.bookstore.entity.Book;
 
-import java.util.List;
+import xyz.seanchao.bookstore.entity.Book;
+import xyz.shreyagupta.bookstore.entity.Book;
 
 public interface BookService {
     Book findBookById(Integer id);

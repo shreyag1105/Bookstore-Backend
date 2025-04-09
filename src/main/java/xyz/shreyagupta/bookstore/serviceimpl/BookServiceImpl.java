@@ -1,15 +1,16 @@
-package xyz.seanchao.bookstore.serviceimpl;
+package xyz.shreyagupta.bookstore.serviceimpl;
+
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import xyz.seanchao.bookstore.dao.BookDao;
-import xyz.seanchao.bookstore.entity.Book;
-import xyz.seanchao.bookstore.repository.BookRepository;
-import xyz.seanchao.bookstore.service.BookService;
 
-import java.util.List;
+import xyz.shreyagupta.bookstore.dao.BookDao;
+import xyz.shreyagupta.bookstore.entity.Book;
+import xyz.shreyagupta.bookstore.repository.BookRepository;
+import xyz.shreyagupta.bookstore.service.BookService;
 
 @Service
 public class BookServiceImpl implements BookService {

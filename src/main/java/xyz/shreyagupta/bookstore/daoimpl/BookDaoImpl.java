@@ -1,10 +1,10 @@
-package xyz.seanchao.bookstore.daoimpl;
+package xyz.shreyagupta.bookstore.daoimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import xyz.seanchao.bookstore.dao.BookDao;
-import xyz.seanchao.bookstore.entity.Book;
-import xyz.seanchao.bookstore.repository.BookRepository;
+import xyz.shreyagupta.bookstore.dao.BookDao;
+import xyz.shreyagupta.bookstore.entity.Book;
+import xyz.shreyagupta.bookstore.repository.BookRepository;
 
 import java.util.List;
 
